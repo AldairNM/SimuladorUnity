@@ -24,4 +24,9 @@ public class union : MonoBehaviour
         i++;
         name = "Union" + i;
     }
+    public void cambioO()
+    {
+        i--;
+        name = "Union" + i;
+    }
 }

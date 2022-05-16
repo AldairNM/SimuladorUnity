@@ -25,4 +25,9 @@ public class cubito : MonoBehaviour
         i++;
         name = "Cubo" + i;
     }
+    public void cambioO()
+    {
+        i--;
+        name = "Cubo" + i;
+    }
 }
