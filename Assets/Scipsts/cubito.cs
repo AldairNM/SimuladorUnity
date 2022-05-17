@@ -8,6 +8,7 @@ public class cubito : MonoBehaviour
     public Vector3 posision;
     public int i;
     public int c;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -30,4 +31,5 @@ public class cubito : MonoBehaviour
         i--;
         name = "Cubo" + i;
     }
+   
 }

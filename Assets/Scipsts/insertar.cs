@@ -8,6 +8,12 @@ public class insertar : MonoBehaviour
     public Button insert1;
     public Button insert2;
     public Button insert3;
+
+    public Button eliminar1;
+    public Button eliminar2;
+    public Button eliminar3;
+    public GameObject eliminar3_3;
+
     public GameObject insert1_1;
     public GameObject insert2_2;
     public GameObject insert3_3;
@@ -28,6 +34,11 @@ public class insertar : MonoBehaviour
         insert1.gameObject.SetActive(true);
         insert2.gameObject.SetActive(true);
         insert3.gameObject.SetActive(true);
+
+        eliminar1.gameObject.SetActive(false);
+        eliminar2.gameObject.SetActive(false);
+        eliminar3.gameObject.SetActive(false);
+        eliminar3_3.gameObject.SetActive(false);
 
     }
     public void insertar_1()

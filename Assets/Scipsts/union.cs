@@ -7,6 +7,7 @@ public class union : MonoBehaviour
     public float swayAmoun = 8;
     public Vector3 posision;
     public int i;
+
     // Start is called before the first frame update
     void Start()
     {

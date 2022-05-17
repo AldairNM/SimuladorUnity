@@ -19,6 +19,8 @@ public class ListaInsert : MonoBehaviour
     public GameObject nada;
     public GameObject cuboclon;
     public GameObject unionclon;
+    GameObject[] cubos;
+    GameObject[] uniones;
 
     public TMP_InputField valorE;
 
@@ -111,10 +113,14 @@ public class ListaInsert : MonoBehaviour
             newCubo.GetComponent<cubito>().c = c;
             newCubo.GetComponent<cubito>().i = i;
             newCubo.GetComponentInChildren<TMP_Text>().text = valor;
+            newCubo.tag = "CUBO";
+
             GameObject newunion;
             newunion = Instantiate(union, cubo.transform.position, union.transform.rotation);
             newunion.GetComponent<union>().posision = posision + uni;
             newunion.name = "Union" + i;
+            newunion.GetComponent<union>().i = i;
+            newunion.tag = "UNION";
 
 
         }
@@ -122,13 +128,25 @@ public class ListaInsert : MonoBehaviour
         {
             i = 0;
             c = c + 1;
-            for (int x = 0; x < c; x++)
+            cubos = GameObject.FindGameObjectsWithTag("CUBO");
+            uniones = GameObject.FindGameObjectsWithTag("UNION");
+            foreach (GameObject cubo in cubos)
             {
-                cuboclon = GameObject.Find("Cubo" + x);
+                cubo.GetComponent<cubito>().cambioI();
+            }
+            foreach (GameObject union in uniones)
+            {
+                union.GetComponent<union>().cambioI();
+            }
+
+
+            /*for (int x = 0; x < c; x++)
+            {
+                cuboclon = GameObject.Find("Union" + x);
                 cuboclon.GetComponent<cubito>().cambioI();
                 unionclon = GameObject.Find("Union" + x);
                 unionclon.GetComponent<union>().cambioI();
-            }
+            }*/
 
 
             Vector3 espacio = new Vector3(0, 0, 1.68f);
@@ -140,11 +158,16 @@ public class ListaInsert : MonoBehaviour
             newCubo.GetComponent<cubito>().c = c;
             newCubo.GetComponent<cubito>().i = i;
             newCubo.GetComponentInChildren<TMP_Text>().text = valor;
+            newCubo.tag = "CUBO";
+
             GameObject newunion;
             newunion = Instantiate(union, cubo.transform.position, union.transform.rotation);
             newunion.GetComponent<union>().posision = posisionI - espacio + uni;
             newunion.name = "Union" + i;
+            newunion.GetComponent<union>().i = i;
+            newunion.tag = "UNION";
             posisionI = posisionI - espacio;
+            i = c;
         }
 
         Debug.Log(lista.head.data + " " + lista.tail.data);
@@ -167,10 +190,14 @@ public class ListaInsert : MonoBehaviour
             newCubo.GetComponent<cubito>().c = c;
             newCubo.GetComponent<cubito>().i = i;
             newCubo.GetComponentInChildren<TMP_Text>().text = valor;
+            newCubo.tag = "CUBO";
+
             GameObject newunion;
             newunion = Instantiate(union, cubo.transform.position, union.transform.rotation);
             newunion.GetComponent<union>().posision = posision + uni;
             newunion.name = "Union" + i;
+            newunion.GetComponent<union>().i = i;
+            newunion.tag = "UNION";
 
         }
         else
@@ -189,12 +216,16 @@ public class ListaInsert : MonoBehaviour
                 newCubo.GetComponent<cubito>().c = c;
                 newCubo.GetComponent<cubito>().i = i;
                 newCubo.GetComponentInChildren<TMP_Text>().text = valor;
+                newCubo.tag = "CUBO";
+
                 Vector3 uni = new Vector3(0, 0, 1.00f);
                 GameObject newunion;
                 newunion = Instantiate(union, cubo.transform.position, union.transform.rotation);
                 newunion.GetComponent<union>().posision = posisionO + espacio + uni;
                 newunion.name = "Union" + i;
-                posisionO = posisionO - espacio;
+                newunion.GetComponent<union>().i = i;
+                newunion.tag = "UNION";
+                posisionO = posisionO + espacio;
             }
         }
         Debug.Log(lista.head.data + " " + lista.tail.data);
@@ -221,16 +252,26 @@ public class ListaInsert : MonoBehaviour
             cuboclon = GameObject.Find("Cubo" + a);
             cuboclon.GetComponent<cubito>().posision = cuboclon.transform.position + espacio;
 
+
             unionclon = GameObject.Find("Union" + a);
             unionclon.GetComponent<union>().posision = unionclon.transform.position + espacio;
         }
-        posisionO = posisionO + espacio;
-        for (int k = w; k < c; k++)
+
+        cubos = GameObject.FindGameObjectsWithTag("CUBO");
+        uniones = GameObject.FindGameObjectsWithTag("UNION");
+        foreach (GameObject cubo in cubos)
         {
-            cuboclon = GameObject.Find("Cubo" + k);
-            cuboclon.GetComponent<cubito>().cambioI();
-            unionclon = GameObject.Find("Union" + k);
-            unionclon.GetComponent<union>().cambioI();
+            if (cubo.GetComponent<cubito>().i >= w)
+            {
+                cubo.GetComponent<cubito>().cambioI();
+            }
+        }
+        foreach (GameObject union in uniones)
+        {
+            if (union.GetComponent<union>().i >= w)
+            {
+                union.GetComponent<union>().cambioI();
+            }
         }
         LinkedList.Node aft = pre.next;
         LinkedList.Node vtx = new LinkedList.Node(valor);
@@ -243,11 +284,17 @@ public class ListaInsert : MonoBehaviour
         newCubo.GetComponent<cubito>().c = c;
         newCubo.GetComponent<cubito>().i = i;
         newCubo.GetComponentInChildren<TMP_Text>().text = valor;
+        newCubo.tag = "CUBO";
+
         GameObject newunion;
         newunion = Instantiate(union, cubo.transform.position, union.transform.rotation);
         newunion.GetComponent<union>().posision = ubi + uni;
         newunion.name = "Union" + i;
+        newunion.GetComponent<union>().i = i;
+        newunion.tag = "UNION";
+        posisionO = posisionO + espacio;
         i = c;
+        Debug.Log(lista.head.data + " " + lista.tail.data);
     }
     public void alinicioE()
     {
@@ -259,21 +306,26 @@ public class ListaInsert : MonoBehaviour
         
         cuboclon = GameObject.Find("Cubo" + 0);
         cuboclon.GetComponent<cubito>().posision = cubo.transform.position;
-        Destroy(cuboclon);
+        Destroy(cuboclon, 1);
         unionclon = GameObject.Find("Union" + 0);
         unionclon.GetComponent<union>().posision = cubo.transform.position;
-        Destroy(unionclon);
+        Destroy(unionclon, 1);
         posisionI = posisionI + espacio;
-        
-        for (int k = 1; k <= c; k++)
+
+        if (c > 0)
         {
-            cuboclon = GameObject.Find("Cubo" + k);
-            cuboclon.GetComponent<cubito>().cambioO();
-            unionclon = GameObject.Find("Union" + k);
-            unionclon.GetComponent<union>().cambioO();
+            for (int k = 1; k <= c; k++)
+            {
+                cuboclon = GameObject.Find("Cubo" + k);
+                cuboclon.GetComponent<cubito>().cambioO();
+                unionclon = GameObject.Find("Union" + k);
+                unionclon.GetComponent<union>().cambioO();
+            }
+            c--;
+            i = c;
+
         }
-        c--;
-        i = c;
+        
 
 
         Debug.Log(lista.head.data + " " + lista.tail.data);
@@ -283,30 +335,85 @@ public class ListaInsert : MonoBehaviour
         LinkedList.Node pre = lista.head;
         Vector3 espacio = new Vector3(0, 0, 1.68f);
         LinkedList.Node temp = pre.next;
-
-        while (temp.next != null)
+        if (i != 0)
         {
-            pre = pre.next;
-            temp = temp.next;
+            while (temp.next != null)
+            {
+                pre = pre.next;
+                temp = temp.next;
+            }
+            pre.next = null;
         }
-        pre.next = null;
+        
 
         lista.tail = pre;
 
         cuboclon = GameObject.Find("Cubo" + i);
         cuboclon.GetComponent<cubito>().posision = cubo.transform.position;
-        Destroy(cuboclon);
+        Destroy(cuboclon, 1);
         unionclon = GameObject.Find("Union" + i);
         unionclon.GetComponent<union>().posision = cubo.transform.position;
-        Destroy(unionclon);
+        Destroy(unionclon, 1);
         posisionO = posisionO - espacio;
         c--;
         i = c;
+
+
+        
 
         Debug.Log(lista.head.data + " " + lista.tail.data);
     }
     public void iespecificoE(int w)
     {
+        Vector3 espacio = new Vector3(0, 0, 1.68f);
+        LinkedList.Node pre = lista.head;
+        for (int k = 0; k < w - 1; k++)
+        {
+            pre = pre.next;
+        }
+        
+        cuboclon = GameObject.Find("Cubo" + w);
+        cuboclon.GetComponent<cubito>().posision = cubo.transform.position;
+        Destroy(cuboclon);
+        unionclon = GameObject.Find("Union" + w);
+        unionclon.GetComponent<union>().posision = cubo.transform.position;
+        Destroy(unionclon);
+        
+        for (int a = w; a >= w && a <= c; a++)
+        {
+            cuboclon = GameObject.Find("Cubo" + a);
+            cuboclon.GetComponent<cubito>().posision = cuboclon.transform.position - espacio;
 
+
+            unionclon = GameObject.Find("Union" + a);
+            unionclon.GetComponent<union>().posision = unionclon.transform.position - espacio;
+        }
+
+        cubos = GameObject.FindGameObjectsWithTag("CUBO");
+        uniones = GameObject.FindGameObjectsWithTag("UNION");
+        foreach (GameObject cubo in cubos)
+        {
+            if (cubo.GetComponent<cubito>().i >= w)
+            {
+                cubo.GetComponent<cubito>().cambioO();
+            }
+        }
+        foreach (GameObject union in uniones)
+        {
+            if (union.GetComponent<union>().i >= w)
+            {
+                union.GetComponent<union>().cambioO();
+            }
+        }
+        
+        LinkedList.Node del = pre.next;
+        LinkedList.Node aft = del.next;
+        pre.next = aft;
+        del.next = null;
+        posisionO = posisionO - espacio; 
+        c--;
+        i = c;
+
+        Debug.Log(lista.head.data + " " + lista.tail.data);
     }
 }
