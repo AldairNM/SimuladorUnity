@@ -1273,9 +1273,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: ColaInsert, Assembly-CSharp
-        m_MethodName: alfinal
+      - m_Target: {fileID: 1238127437}
+        m_TargetAssemblyTypeName: ArrayInsert, Assembly-CSharp
+        m_MethodName: aumentar
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1652,6 +1652,105 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 859300328}
   m_CullTransparentMesh: 1
+--- !u!1 &1187186197
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1187186202}
+  - component: {fileID: 1187186201}
+  - component: {fileID: 1187186200}
+  - component: {fileID: 1187186199}
+  - component: {fileID: 1187186198}
+  m_Layer: 0
+  m_Name: ManagerButton
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1187186198
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1187186197}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc2dfcc88900e5744b6d8585abcdcc8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  insert1_1: {fileID: 7322112261700801810}
+  tamano_1: {fileID: 1929444956}
+  tamano_2: {fileID: 413521490}
+  eliminar1: {fileID: 5398751958207700227}
+--- !u!114 &1187186199
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1187186197}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9898aff694a02214bb00602cbdf89047, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  insert1_1: {fileID: 7322112261700801810}
+  tamano_1: {fileID: 1929444956}
+  tamano_2: {fileID: 413521490}
+  eliminar1: {fileID: 5398751958207700227}
+--- !u!114 &1187186200
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1187186197}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07ef18bc208245a418b62c592ed0f26d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  insert1_1: {fileID: 7322112261700801810}
+  tamano_1: {fileID: 1929444956}
+  tamano_2: {fileID: 413521490}
+  eliminar1: {fileID: 5398751958207700227}
+--- !u!114 &1187186201
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1187186197}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ead7c6440f4fdb48b54191cda7c4484, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  insert1_1: {fileID: 7322112261700801810}
+  tamano_1: {fileID: 1929444956}
+  tamano_2: {fileID: 413521490}
+  eliminar1: {fileID: 5398751958207700227}
+--- !u!4 &1187186202
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1187186197}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -8.132984, y: 9.179713, z: -3.5778697}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1212497229
 GameObject:
   m_ObjectHideFlags: 0
@@ -1719,6 +1818,55 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1238127435
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1238127436}
+  - component: {fileID: 1238127437}
+  m_Layer: 0
+  m_Name: ManagerArray
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1238127436
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1238127435}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -8.132984, y: 9.179713, z: -3.5778697}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1238127437
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1238127435}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e339e988d637fca48a638cb62344c506, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cubo: {fileID: 7577676542728805755, guid: 38acf4c4899d9c2478c7b4b812da4a29, type: 3}
+  "tama\xF1o1": {fileID: 487782753}
+  "tama\xF1o2": {fileID: 246981671}
+  valorI: {fileID: 1098154600734698289}
+  cuboclon: {fileID: 0}
 --- !u!1 &1289858647
 GameObject:
   m_ObjectHideFlags: 0
@@ -1992,9 +2140,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: InsertarCola, Assembly-CSharp
-        m_MethodName: Insertar
+      - m_Target: {fileID: 1187186199}
+        m_TargetAssemblyTypeName: AumentarArray, Assembly-CSharp
+        m_MethodName: Aumentararray
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2509,9 +2657,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: ColaInsert, Assembly-CSharp
-        m_MethodName: alfinal
+      - m_Target: {fileID: 1238127437}
+        m_TargetAssemblyTypeName: ArrayInsert, Assembly-CSharp
+        m_MethodName: Creararray
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2709,9 +2857,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: ColaInsert, Assembly-CSharp
-        m_MethodName: alfinal
+      - m_Target: {fileID: 1238127437}
+        m_TargetAssemblyTypeName: ArrayInsert, Assembly-CSharp
+        m_MethodName: ingresar
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3054,9 +3202,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: EliminarCola, Assembly-CSharp
-        m_MethodName: Eliminar
+      - m_Target: {fileID: 1187186198}
+        m_TargetAssemblyTypeName: EliminarArray, Assembly-CSharp
+        m_MethodName: Eliminararray
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3614,9 +3762,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: InsertarCola, Assembly-CSharp
-        m_MethodName: Insertar
+      - m_Target: {fileID: 1187186200}
+        m_TargetAssemblyTypeName: InsertarArray, Assembly-CSharp
+        m_MethodName: Insertararray
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3878,9 +4026,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: ColaInsert, Assembly-CSharp
-        m_MethodName: CrearLista
+      - m_Target: {fileID: 1187186201}
+        m_TargetAssemblyTypeName: CrearArray, Assembly-CSharp
+        m_MethodName: Creararray
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4064,9 +4212,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: ColaInsert, Assembly-CSharp
-        m_MethodName: alinicioE
+      - m_Target: {fileID: 1238127437}
+        m_TargetAssemblyTypeName: ArrayInsert, Assembly-CSharp
+        m_MethodName: eliminar
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
