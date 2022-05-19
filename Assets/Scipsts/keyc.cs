@@ -2,14 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class cubito : MonoBehaviour
+public class keyc : MonoBehaviour
 {
     public float swayAmoun = 8;
     public Vector3 posision;
     public int i;
     public int c;
     public int d;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -25,12 +24,11 @@ public class cubito : MonoBehaviour
     public void cambioI()
     {
         i++;
-        name = "Cubo" + i;
+        name = "Key" + i;
     }
     public void cambioO()
     {
         i--;
-        name = "Cubo" + i;
+        name = "Key" + i;
     }
-   
 }
