@@ -8,6 +8,7 @@ TagManager:
   - CUBO
   - KEY
   - VALUE
+  - UNION2
   layers:
   - Default
   - TransparentFX

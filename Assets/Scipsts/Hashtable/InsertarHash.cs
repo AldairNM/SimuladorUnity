@@ -7,6 +7,7 @@ public class InsertarHash : MonoBehaviour
 {
     public GameObject insert1_1;
     public GameObject eliminar1_1;
+    public GameObject crear1;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,5 +24,7 @@ public class InsertarHash : MonoBehaviour
         insert1_1.gameObject.SetActive(true);
 
         eliminar1_1.gameObject.SetActive(false);
+
+        crear1.gameObject.SetActive(false);
     }
 }

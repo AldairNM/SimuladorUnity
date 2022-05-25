@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class EliminarHash : MonoBehaviour
+public class CrearHash : MonoBehaviour
 {
     public GameObject insert1_1;
     public GameObject eliminar1_1;
@@ -19,12 +19,12 @@ public class EliminarHash : MonoBehaviour
     {
         
     }
-    public void Eliminarhash()
+    public void crearhash()
     {
         insert1_1.gameObject.SetActive(false);
 
-        eliminar1_1.gameObject.SetActive(true);
+        eliminar1_1.gameObject.SetActive(false);
 
-        crear1.gameObject.SetActive(false);
+        crear1.gameObject.SetActive(true);
     }
 }
