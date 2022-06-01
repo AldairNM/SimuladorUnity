@@ -227,11 +227,12 @@ public class HashColition : MonoBehaviour
         int w = int.Parse(valueValorE.text);
         int z = 0;
         Vector3 espacio = new Vector3(0, 1.44f, 0);
-        foreach (GameObject cubo in cubos)
+        values = GameObject.FindGameObjectsWithTag("VALUE");
+        foreach (GameObject value in values)
         {
-            if (cubo.GetComponent<cubito>().i == w)
+            if (value.GetComponent<valuec>().d == w)
             {
-                z = cubo.GetComponent<cubito>().i;
+                z = value.GetComponent<valuec>().i;
             }
         }
 

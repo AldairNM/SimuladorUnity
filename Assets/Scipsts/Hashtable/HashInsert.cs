@@ -103,7 +103,7 @@ public class HashInsert : MonoBehaviour
             GameObject newValue;
             newValue = Instantiate(value, cubo.transform.position, value.transform.rotation);
             newValue.GetComponent<valuec>().posision = ubi + uni + uni + uni + espacio2;
-            newValue.name = "Value" + i2;
+            newValue.name = "Value" + valor3;
             newValue.GetComponent<valuec>().c = c;
             newValue.GetComponent<valuec>().i = i2;
             newValue.GetComponent<valuec>().d = valor3;
@@ -126,7 +126,7 @@ public class HashInsert : MonoBehaviour
             GameObject newValue;
             newValue = Instantiate(value, cubo.transform.position, value.transform.rotation);
             newValue.GetComponent<valuec>().posision = ubi + uni + espacio2;
-            newValue.name = "Value" + i2;
+            newValue.name = "Value" + valor3;
             newValue.GetComponent<valuec>().c = c;
             newValue.GetComponent<valuec>().i = i2;
             newValue.GetComponent<valuec>().d = valor3;
@@ -151,22 +151,23 @@ public class HashInsert : MonoBehaviour
         Vector3 espacio2 = new Vector3(0, 0, 1.68f);
         Vector3 uni = new Vector3(0, 0, 0.76f);
         Vector3 espacio = new Vector3(0, 1.44f, 0);
-        foreach (GameObject cubo in cubos)
+        values = GameObject.FindGameObjectsWithTag("VALUE");
+        foreach (GameObject value in values)
         {
-            if (cubo.GetComponent<cubito>().i == w)
+            if (value.GetComponent<valuec>().d == w)
             {
-                z = cubo.GetComponent<cubito>().i;
+                z = value.GetComponent<valuec>().d;
                 uni2 = new Vector3(0, 0, 0);
                 uni21 = new Vector3(0, 0, 0);
             }
         }
 
-        unionclon = GameObject.Find("Union" + z);
-        Destroy(unionclon);
+        //unionclon = GameObject.Find("Union" + z);
+        //Destroy(unionclon);
         valueclon = GameObject.Find("Value" + z);
         Destroy(valueclon);
-        
-        uniones = GameObject.FindGameObjectsWithTag("UNION");
+
+        /*uniones = GameObject.FindGameObjectsWithTag("UNION");
         foreach (GameObject union in uniones)
         {
             if (union.GetComponent<union>().i == z)
@@ -177,12 +178,12 @@ public class HashInsert : MonoBehaviour
                     uni2 = uni2 + (uni / 2);
                 } 
             }
-        }
-        
+        }*/
+
         values = GameObject.FindGameObjectsWithTag("VALUE");
         foreach (GameObject value in values)
         {
-            if (value.GetComponent<valuec>().i == z)
+            if (value.GetComponent<valuec>().d == z)
             {
                 value.GetComponent<valuec>().posision=value.transform.position - espacio2 - espacio2-uni21;
                 if (uni21.z < (uni / 2).z)
