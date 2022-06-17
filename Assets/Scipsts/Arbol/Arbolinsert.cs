@@ -34,7 +34,7 @@ public class Arbolinsert : MonoBehaviour
     int c = 0;
     int i = 0;
 
-
+    [SerializeField]
     int Level=0;
     Nodo_Arbol t=new Nodo_Arbol();
     public class Nodo_Arbol

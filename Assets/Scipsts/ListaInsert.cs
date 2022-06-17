@@ -21,6 +21,13 @@ public class ListaInsert : MonoBehaviour
     public GameObject unionclon;
     GameObject[] cubos;
     GameObject[] uniones;
+    cubito lastCubito;
+    [SerializeField]
+    Transform lookAtTransform;
+    [SerializeField]
+    GameObject vcm;
+
+
 
     public TMP_InputField valorE;
 
@@ -29,6 +36,10 @@ public class ListaInsert : MonoBehaviour
     Vector3 posisionO = new Vector3(-17.65371f, 2.58f, -7.19f);
     int c = 0;
     int i = 0;
+
+    private void Update()
+    {
+    }
     public class LinkedList
     {
         public Node head = null;
@@ -44,12 +55,18 @@ public class ListaInsert : MonoBehaviour
             } // Constructor
         }
     }
+
+    void UpdateCameraLookAt(Vector3 pos)
+    {
+        lookAtTransform.position = pos;
+    }
     public void ObtenerValor(int x)
     {
         if (x == 1)
         {
             string dato1 = valor1.GetComponent<TMP_Text>().text;
             alinicio(dato1);
+            UpdateCameraLookAt(posisionI);
         }
         else
         {
@@ -57,6 +74,7 @@ public class ListaInsert : MonoBehaviour
             {
                 string dato1 = valor2.GetComponent<TMP_Text>().text;
                 alfinal(dato1);
+                UpdateCameraLookAt(posisionO);
             }
             else
             {
@@ -65,21 +83,25 @@ public class ListaInsert : MonoBehaviour
                     string dato1 = valor3.GetComponent<TMP_Text>().text;
                     int i = int.Parse(valor31.text);
                     iespecifico(dato1, i);
+                    UpdateCameraLookAt(posisionO);
                 }
             }
         }
     }
+
     public void ObtenerValorEli(int x)
     {
         if (x == 1)
         {
             alinicioE();
+            UpdateCameraLookAt(posisionI);
         }
         else
         {
             if (x == 2)
             {
                 alfinalE();
+                UpdateCameraLookAt(posisionO);
             }
             else
             {
@@ -87,6 +109,7 @@ public class ListaInsert : MonoBehaviour
                 {
                     int i = int.Parse(valorE.text);
                     iespecificoE(i);
+                    UpdateCameraLookAt(posision);
                 }
             }
         }
@@ -114,7 +137,7 @@ public class ListaInsert : MonoBehaviour
             newCubo.GetComponent<cubito>().i = i;
             newCubo.GetComponentInChildren<TMP_Text>().text = valor;
             newCubo.tag = "CUBO";
-
+            lastCubito = GetComponent<cubito>();
             GameObject newunion;
             newunion = Instantiate(union, cubo.transform.position, union.transform.rotation);
             newunion.GetComponent<union>().posision = posision + uni;
@@ -159,6 +182,8 @@ public class ListaInsert : MonoBehaviour
             newCubo.GetComponent<cubito>().i = i;
             newCubo.GetComponentInChildren<TMP_Text>().text = valor;
             newCubo.tag = "CUBO";
+            lastCubito = GetComponent<cubito>();
+
 
             GameObject newunion;
             newunion = Instantiate(union, cubo.transform.position, union.transform.rotation);
@@ -191,6 +216,7 @@ public class ListaInsert : MonoBehaviour
             newCubo.GetComponent<cubito>().i = i;
             newCubo.GetComponentInChildren<TMP_Text>().text = valor;
             newCubo.tag = "CUBO";
+            lastCubito = GetComponent<cubito>();
 
             GameObject newunion;
             newunion = Instantiate(union, cubo.transform.position, union.transform.rotation);
@@ -217,6 +243,7 @@ public class ListaInsert : MonoBehaviour
                 newCubo.GetComponent<cubito>().i = i;
                 newCubo.GetComponentInChildren<TMP_Text>().text = valor;
                 newCubo.tag = "CUBO";
+                lastCubito = GetComponent<cubito>();
 
                 Vector3 uni = new Vector3(0, 0, 1.00f);
                 GameObject newunion;
@@ -285,6 +312,7 @@ public class ListaInsert : MonoBehaviour
         newCubo.GetComponent<cubito>().i = i;
         newCubo.GetComponentInChildren<TMP_Text>().text = valor;
         newCubo.tag = "CUBO";
+        lastCubito = GetComponent<cubito>();
 
         GameObject newunion;
         newunion = Instantiate(union, cubo.transform.position, union.transform.rotation);

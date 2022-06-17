@@ -9,11 +9,22 @@ public class cubito : MonoBehaviour
     public int i;
     public int c;
     public int d;
+    Color normalColor;
+    MeshRenderer meshRenderer;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        meshRenderer = GetComponent<MeshRenderer>();
+        normalColor = meshRenderer.materials[0].color;
+    }
+    void OnMouseOver()
+    {
+        meshRenderer.materials[0].color = Color.blue;
+    }
+    void OnMouseExit()
+    {   
+        meshRenderer.materials[0].color = normalColor;
     }
 
     // Update is called once per frame

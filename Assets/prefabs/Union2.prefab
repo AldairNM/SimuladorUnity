@@ -29,7 +29,6 @@ Transform:
   m_LocalRotation: {x: 0.36382848, y: -0, z: -0, w: 0.931466}
   m_LocalPosition: {x: -0.13293839, y: -0.03793025, z: 0.4804616}
   m_LocalScale: {x: 0.16377224, y: 0.11159587, z: 0.30231524}
-  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1136110259964437294}
   m_RootOrder: 1
@@ -53,7 +52,6 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -126,7 +124,6 @@ Transform:
   m_LocalRotation: {x: -0.40552446, y: -0, z: -0, w: 0.91408426}
   m_LocalPosition: {x: -0.13293839, y: -0.17863035, z: 0.47966146}
   m_LocalScale: {x: 0.16377224, y: 0.11159587, z: 0.3097457}
-  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1136110259964437294}
   m_RootOrder: 2
@@ -150,7 +147,6 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -223,7 +219,6 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.13293839, y: -0.11533022, z: 0.15776157}
   m_LocalScale: {x: 0.16377224, y: 0.16842116, z: 0.7409375}
-  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1136110259964437294}
   m_RootOrder: 0
@@ -247,7 +242,6 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -301,6 +295,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1136110259964437294}
   - component: {fileID: -398753025594579537}
+  - component: {fileID: 3662954263925140379}
   m_Layer: 0
   m_Name: Union2
   m_TagString: Untagged
@@ -318,7 +313,6 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -17.437462, y: 2.7379303, z: -6.3644614}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1.5}
-  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2957472913526510644}
   - {fileID: 4174953099117806554}
@@ -341,3 +335,22 @@ MonoBehaviour:
   swayAmoun: 8
   posision: {x: 0, y: 0, z: 0}
   i: 0
+--- !u!95 &3662954263925140379
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6524842173136240753}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 949522cd09ab43f41a8f8aebd6e6dd11, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

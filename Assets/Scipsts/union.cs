@@ -7,11 +7,12 @@ public class union : MonoBehaviour
     public float swayAmoun = 8;
     public Vector3 posision;
     public int i;
+    Animator animator;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -24,10 +25,12 @@ public class union : MonoBehaviour
     {
         i++;
         name = "Union" + i;
+        animator.SetBool("isCurrent", true);
     }
     public void cambioO()
     {
         i--;
         name = "Union" + i;
+        animator.SetBool("isCurrent", true);
     }
 }
