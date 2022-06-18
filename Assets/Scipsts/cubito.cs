@@ -22,6 +22,9 @@ public class cubito : MonoBehaviour
     [SerializeField]
     PilaInsert pilaInsert;
 
+    [SerializeField]
+    HashColition hashColition;
+
     public int managerType = 0; // 0 = lista enlazada | 1 = pila
 
     // Start is called before the first frame update
@@ -34,6 +37,7 @@ public class cubito : MonoBehaviour
     {
         if (managerType == 0) listaInsert = GameObject.Find("ManagerInsert").GetComponent<ListaInsert>();
         if (managerType == 1) pilaInsert = GameObject.Find("ManagerPila").GetComponent<PilaInsert>();
+        if (managerType == 4) hashColition = GameObject.Find("ManagerHash").GetComponent<HashColition>();
     }
 
     // Update is called once per frame

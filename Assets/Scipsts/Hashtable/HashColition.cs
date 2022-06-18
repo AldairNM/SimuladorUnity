@@ -33,6 +33,9 @@ public class HashColition : MonoBehaviour
     Vector3 posisionO = new Vector3(-16.75f, 8.64f, -11.082f);
 
 
+    [SerializeField]
+    Transform lookAtTransform;
+
     int c = 0;
     int i = 0;
     int n = 0;
@@ -55,9 +58,11 @@ public class HashColition : MonoBehaviour
             newCubo.GetComponent<cubito>().i = i;
             newCubo.GetComponentInChildren<TMP_Text>().text = i.ToString();
             newCubo.tag = "CUBO";
+            newCubo.GetComponent<cubito>().managerType = 4;
             posisionO = posisionO - espacio;
             cubos[x] = newCubo;
             i = i + 1;
+            lookAtTransform.position = newCubo.GetComponent<cubito>().posision;
         }
     }
     public void Insertarhash()
@@ -119,7 +124,7 @@ public class HashColition : MonoBehaviour
                         newValue.GetComponent<valuec>().d = valor3;
                         newValue.tag = "VALUE";
                         newValue.GetComponentInChildren<TMP_Text>().text = valor;
-
+                        lookAtTransform.position = newValue.GetComponent<valuec>().posision;
                         CubitosXD.Add(newunion, newValue);
                         hashtableXD = new Hashtable(CubitosXD);
                     }
@@ -150,6 +155,8 @@ public class HashColition : MonoBehaviour
                     newValue.GetComponent<valuec>().d = valor3;
                     newValue.tag = "VALUE";
                     newValue.GetComponentInChildren<TMP_Text>().text = valor;
+
+                    lookAtTransform.position = newValue.GetComponent<valuec>().posision;
 
                     CubitosXD.Add(newunion, newValue);
                     hashtableXD = new Hashtable(CubitosXD);
@@ -189,6 +196,7 @@ public class HashColition : MonoBehaviour
                     newValue.tag = "VALUE";
                     newValue.GetComponentInChildren<TMP_Text>().text = valor;
 
+                    lookAtTransform.position = newValue.GetComponent<valuec>().posision;
                     CubitosXD.Add(newunion, newValue);
                     hashtableXD = new Hashtable(CubitosXD);
                 }
@@ -212,7 +220,7 @@ public class HashColition : MonoBehaviour
             newValue.GetComponent<valuec>().d = valor3;
             newValue.tag = "VALUE";
             newValue.GetComponentInChildren<TMP_Text>().text = valor;
-
+            lookAtTransform.position = newValue.GetComponent<valuec>().posision;
             CubitosXD.Add(newunion, newValue);
             hashtableXD = new Hashtable(CubitosXD);
         }
