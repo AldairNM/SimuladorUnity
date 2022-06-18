@@ -33,6 +33,7 @@ public class ArrayInsert : MonoBehaviour
             Vector3 espacio = new Vector3(0, 0, 1.68f);
             GameObject newCubo;
             newCubo = Instantiate(cubo, cubo.transform.position, cubo.transform.rotation);
+            newCubo.GetComponent<cubito>().managerType = 2;
             newCubo.GetComponent<cubito>().posision = posisionO;
             newCubo.name = "Cubo" + i;
             newCubo.GetComponent<cubito>().i = i;
@@ -94,6 +95,7 @@ public class ArrayInsert : MonoBehaviour
             Vector3 espacio = new Vector3(0, 0, 1.68f);
             GameObject newCubo;
             newCubo = Instantiate(cubo, cubo.transform.position, cubo.transform.rotation);
+            newCubo.GetComponent<cubito>().managerType = 2;
             newCubo.GetComponent<cubito>().posision = posisionO;
             newCubo.name = "Cubo" + i;
             newCubo.GetComponent<cubito>().i = i;

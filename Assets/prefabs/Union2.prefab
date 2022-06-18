@@ -332,9 +332,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94fa27ca916c3054a9c4f341dd0db1b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  swayAmoun: 8
+  swayAmoun: 25
   posision: {x: 0, y: 0, z: 0}
   i: 0
+  lineRenderer: {fileID: 0}
+  JoinInicio: {fileID: 0}
+  JoinFinal: {fileID: 0}
 --- !u!95 &3662954263925140379
 Animator:
   serializedVersion: 3

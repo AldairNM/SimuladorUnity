@@ -16,6 +16,9 @@ public class ColaInsert : MonoBehaviour
     GameObject[] cubos;
     GameObject[] uniones;
 
+    [SerializeField]
+    Transform lookAtTransform;
+
     Vector3 posision = new Vector3(-17.65371f, 2.58f, -7.19f);
     Vector3 posisionI = new Vector3(-17.65371f, 2.58f, -7.19f);
     Vector3 posisionO = new Vector3(-17.65371f, 2.58f, -7.19f);
@@ -54,6 +57,7 @@ public class ColaInsert : MonoBehaviour
             Vector3 uni = new Vector3(0, 0, 1.00f);
             GameObject newCubo;
             newCubo = Instantiate(cubo, cubo.transform.position, cubo.transform.rotation);
+            newCubo.GetComponent<cubito>().managerType = 3;
             newCubo.GetComponent<cubito>().posision = posision;
             newCubo.name = "Cubo" + i;
             newCubo.GetComponent<cubito>().c = c;
@@ -67,6 +71,9 @@ public class ColaInsert : MonoBehaviour
             newunion.name = "Union" + i;
             newunion.GetComponent<union>().i = i;
             newunion.tag = "UNION";
+            newunion.GetComponent<union>().SetCubo(newCubo);
+
+            lookAtTransform.position = posisionO;
 
         }
         else
@@ -80,6 +87,7 @@ public class ColaInsert : MonoBehaviour
                 Vector3 espacio = new Vector3(0, 0, 1.68f);
                 GameObject newCubo;
                 newCubo = Instantiate(cubo, cubo.transform.position, cubo.transform.rotation);
+                newCubo.GetComponent<cubito>().managerType = 3;
                 newCubo.GetComponent<cubito>().posision = posisionO + espacio;
                 newCubo.name = "Cubo" + i;
                 newCubo.GetComponent<cubito>().c = c;
@@ -94,7 +102,9 @@ public class ColaInsert : MonoBehaviour
                 newunion.name = "Union" + i;
                 newunion.GetComponent<union>().i = i;
                 newunion.tag = "UNION";
+                newunion.GetComponent<union>().SetCubo(newCubo);
                 posisionO = posisionO + espacio;
+                lookAtTransform.position = posisionO;
             }
         }
         Debug.Log(lista.head.data + " " + lista.tail.data);
@@ -130,6 +140,7 @@ public class ColaInsert : MonoBehaviour
         }
 
 
+        lookAtTransform.position = posisionI;
 
         Debug.Log(lista.head.data + " " + lista.tail.data);
     }

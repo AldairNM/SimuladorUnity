@@ -16,6 +16,8 @@ public class PilaInsert : MonoBehaviour
     GameObject[] cubos;
     GameObject[] uniones;
 
+    [SerializeField]
+    Transform lookAtTransform;
     Vector3 posision = new Vector3(-16.26f, 0.75f, -7.05f);
     Vector3 posisionI = new Vector3(-16.26f, 0.75f, -7.05f);
     Vector3 posisionO = new Vector3(-16.26f, 0.75f, -7.05f);
@@ -55,6 +57,8 @@ public class PilaInsert : MonoBehaviour
             GameObject newCubo;
             newCubo = Instantiate(cubo, cubo.transform.position, cubo.transform.rotation);
             newCubo.GetComponent<cubito>().posision = posision;
+            newCubo.GetComponent<cubito>().managerType = 1;
+            newCubo.GetComponent<cubito>().UpdateInsert();
             newCubo.name = "Cubo" + i;
             newCubo.GetComponent<cubito>().c = c;
             newCubo.GetComponent<cubito>().i = i;
@@ -67,7 +71,9 @@ public class PilaInsert : MonoBehaviour
             newunion.name = "Union" + i;
             newunion.GetComponent<union>().i = i;
             newunion.tag = "UNION";
+            newunion.GetComponent<union>().SetCubo(newCubo);
 
+            lookAtTransform.position = posisionO;
         }
         else
         {
@@ -81,6 +87,8 @@ public class PilaInsert : MonoBehaviour
                 GameObject newCubo;
                 newCubo = Instantiate(cubo, cubo.transform.position, cubo.transform.rotation);
                 newCubo.GetComponent<cubito>().posision = posisionO + espacio;
+                newCubo.GetComponent<cubito>().managerType = 1;
+                newCubo.GetComponent<cubito>().UpdateInsert();
                 newCubo.name = "Cubo" + i;
                 newCubo.GetComponent<cubito>().c = c;
                 newCubo.GetComponent<cubito>().i = i;
@@ -94,7 +102,10 @@ public class PilaInsert : MonoBehaviour
                 newunion.name = "Union" + i;
                 newunion.GetComponent<union>().i = i;
                 newunion.tag = "UNION";
+                newunion.GetComponent<union>().SetCubo(newCubo);
                 posisionO = posisionO + espacio;
+
+                lookAtTransform.position = posisionO;
             }
         }
         Debug.Log(lista.head.data + " " + lista.tail.data);
@@ -128,6 +139,7 @@ public class PilaInsert : MonoBehaviour
         i = c;
 
 
+        lookAtTransform.position = posisionO;
 
 
         Debug.Log(lista.head.data + " " + lista.tail.data);

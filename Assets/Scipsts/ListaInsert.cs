@@ -31,9 +31,10 @@ public class ListaInsert : MonoBehaviour
 
     public TMP_InputField valorE;
 
-    Vector3 posision = new Vector3(-17.65371f, 2.58f, -7.19f);
-    Vector3 posisionI = new Vector3(-17.65371f, 2.58f, -7.19f);
-    Vector3 posisionO = new Vector3(-17.65371f, 2.58f, -7.19f);
+    Vector3 posision = new Vector3(0, 0, 0);
+    Vector3 posisionI = new Vector3(0, 0, 0);
+    Vector3 posisionO = new Vector3(0, 0, 0);
+
     int c = 0;
     int i = 0;
 
@@ -60,6 +61,7 @@ public class ListaInsert : MonoBehaviour
     {
         lookAtTransform.position = pos;
     }
+
     public void ObtenerValor(int x)
     {
         if (x == 1)
@@ -109,7 +111,7 @@ public class ListaInsert : MonoBehaviour
                 {
                     int i = int.Parse(valorE.text);
                     iespecificoE(i);
-                    UpdateCameraLookAt(posision);
+                    UpdateCameraLookAt(posisionO);
                 }
             }
         }
@@ -144,8 +146,7 @@ public class ListaInsert : MonoBehaviour
             newunion.name = "Union" + i;
             newunion.GetComponent<union>().i = i;
             newunion.tag = "UNION";
-
-
+            newunion.GetComponent<union>().SetCubo(newCubo);
         }
         else
         {
@@ -162,7 +163,6 @@ public class ListaInsert : MonoBehaviour
                 union.GetComponent<union>().cambioI();
             }
 
-
             /*for (int x = 0; x < c; x++)
             {
                 cuboclon = GameObject.Find("Union" + x);
@@ -170,7 +170,6 @@ public class ListaInsert : MonoBehaviour
                 unionclon = GameObject.Find("Union" + x);
                 unionclon.GetComponent<union>().cambioI();
             }*/
-
 
             Vector3 espacio = new Vector3(0, 0, 1.68f);
             Vector3 uni = new Vector3(0, 0, 1.00f);
@@ -191,6 +190,9 @@ public class ListaInsert : MonoBehaviour
             newunion.name = "Union" + i;
             newunion.GetComponent<union>().i = i;
             newunion.tag = "UNION";
+
+            newunion.GetComponent<union>().SetCubo(newCubo);
+
             posisionI = posisionI - espacio;
             i = c;
         }
@@ -217,13 +219,13 @@ public class ListaInsert : MonoBehaviour
             newCubo.GetComponentInChildren<TMP_Text>().text = valor;
             newCubo.tag = "CUBO";
             lastCubito = GetComponent<cubito>();
-
             GameObject newunion;
             newunion = Instantiate(union, cubo.transform.position, union.transform.rotation);
             newunion.GetComponent<union>().posision = posision + uni;
             newunion.name = "Union" + i;
             newunion.GetComponent<union>().i = i;
             newunion.tag = "UNION";
+            newunion.GetComponent<union>().SetCubo(newCubo);
 
         }
         else
@@ -252,11 +254,13 @@ public class ListaInsert : MonoBehaviour
                 newunion.name = "Union" + i;
                 newunion.GetComponent<union>().i = i;
                 newunion.tag = "UNION";
+                newunion.GetComponent<union>().SetCubo(newCubo);
                 posisionO = posisionO + espacio;
             }
         }
         Debug.Log(lista.head.data + " " + lista.tail.data);
     }
+
     public void iespecifico(string valor, int w)
     {
         int x = 0;
@@ -320,6 +324,10 @@ public class ListaInsert : MonoBehaviour
         newunion.name = "Union" + i;
         newunion.GetComponent<union>().i = i;
         newunion.tag = "UNION";
+
+
+        newunion.GetComponent<union>().SetCubo(newCubo);
+
         posisionO = posisionO + espacio;
         i = c;
         Debug.Log(lista.head.data + " " + lista.tail.data);
@@ -436,6 +444,7 @@ public class ListaInsert : MonoBehaviour
         
         LinkedList.Node del = pre.next;
         LinkedList.Node aft = del.next;
+
         pre.next = aft;
         del.next = null;
         posisionO = posisionO - espacio; 

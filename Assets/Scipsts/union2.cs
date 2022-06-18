@@ -8,15 +8,56 @@ public class union2 : MonoBehaviour
     public Vector3 posision;
     public int i;
 
+    Animator animator;
+    Color normalColor;
+    MeshRenderer meshRenderer;
+
+    [SerializeField]
+    LineRenderer lineRenderer;
+
+    [SerializeField]
+    GameObject JoinInicio;
+
+    [SerializeField]
+    GameObject JoinFinal;
+
     // Start is called before the first frame update
     void Start()
     {
+        animator = GetComponent<Animator>();
+        meshRenderer = GetComponent<MeshRenderer>();
+        normalColor = meshRenderer.materials[0].color;
+    }
+    public void SetCubo(GameObject cubo)
+    {
+        JoinInicio.GetComponent<UnionJoin>().cubo = cubo;
+    }
 
+    void OnMouseOver()
+    {
+
+        animator.enabled = false;
+        meshRenderer.materials[0].color = Color.yellow;
+        if (Input.GetMouseButtonDown(0))
+        {
+            Debug.Log("Insertando en indice: ");
+        }
+    }
+
+    void OnMouseExit()
+    {
+        meshRenderer.materials[0].color = normalColor;
     }
 
     // Update is called once per frame
     void Update()
     {
+        //Inicio de la unión
+        lineRenderer.SetPosition(0, JoinInicio.transform.localPosition);
+
+
+        //Final de la unión
+        lineRenderer.SetPosition(1, JoinFinal.transform.localPosition);
         float velo = swayAmoun * Time.deltaTime;
         transform.position = Vector3.MoveTowards(transform.position, posision, velo);
     }
@@ -24,10 +65,14 @@ public class union2 : MonoBehaviour
     {
         i++;
         name = "Union2" + i;
+        animator.enabled = true;
+        animator.SetBool("isCurrent", true);
     }
     public void cambioO()
     {
         i--;
         name = "Union2" + i;
+        animator.enabled = true;
+        animator.SetBool("isCurrent", true);
     }
 }
