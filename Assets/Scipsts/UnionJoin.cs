@@ -10,6 +10,8 @@ public class UnionJoin : MonoBehaviour
     public bool isSelected = false;
     Vector2 mousePos;
     float zDistance = 5.0f;
+    Vector3 mouseToWorldPos;
+
 
     Color normalColor;
     MeshRenderer meshRenderer;
@@ -24,8 +26,6 @@ public class UnionJoin : MonoBehaviour
     bool isInitJoin = false;
 
     float time = 0;
-
-    Vector3 mouseToWorldPos;
 
     // Start is called before the first frame update
     void Start()

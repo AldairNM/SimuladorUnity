@@ -55,6 +55,7 @@ public class HashColition : MonoBehaviour
             newCubo.GetComponent<cubito>().i = i;
             newCubo.GetComponentInChildren<TMP_Text>().text = i.ToString();
             newCubo.tag = "CUBO";
+            newCubo.GetComponent<cubito>().managerType = 4;
             posisionO = posisionO - espacio;
             cubos[x] = newCubo;
             i = i + 1;
