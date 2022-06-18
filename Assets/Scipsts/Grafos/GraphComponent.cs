@@ -16,6 +16,9 @@ public class GraphComponent : MonoBehaviour
     GameObject edgePrefab;
 
     [SerializeField]
+    Transform lookTarget;
+
+    [SerializeField]
     GameObject CreatorModeBtn;
     [SerializeField]
     GameObject ExitCreatorModeBtn;
@@ -70,6 +73,7 @@ public class GraphComponent : MonoBehaviour
     {
         mousePos = Input.mousePosition;
         mouseToWorldPos = Camera.main.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, zDistance));
+        lookTarget.position = mouseToWorldPos;
         AddNode(mouseToWorldPos);
     }
 
@@ -95,7 +99,6 @@ public class GraphComponent : MonoBehaviour
         gameObjectsNodes.Add(gameObjectNode);
         if(gameObjectsNodes.Count>1)
         {
-            Debug.Log("ASDAS");
             AddEdge(lastNode.GetComponent<NodeContainer>().node, newNode); // Se crea una arista que une el último nodo creado con el nuevo
         }
         lastNode = gameObjectNode;

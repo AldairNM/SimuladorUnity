@@ -767,7 +767,10 @@ MonoBehaviour:
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
+    ModeOverride: 0
     LensShift: {x: 0, y: 0}
+    GateFit: 2
+    m_SensorSize: {x: 1.7766991, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -783,8 +786,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 325820409}
-  m_LocalRotation: {x: -0.03075149, y: -0.7042446, z: -0.030561088, w: 0.7086324}
-  m_LocalPosition: {x: 5, y: 0.99999976, z: -0.099999994}
+  m_LocalRotation: {x: -0.13213135, y: -0.6852745, z: -0.128512, w: 0.7045742}
+  m_LocalPosition: {x: -7.4999976, y: 0.99999976, z: -0.099999994}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1691603042}
@@ -1632,7 +1635,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 927381365}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0.81269413, z: 0, w: 0.5826906}
   m_LocalPosition: {x: -8.46088, y: 4.9, z: -1.4265506}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1641,7 +1644,7 @@ Transform:
   - {fileID: 1850843142}
   m_Father: {fileID: 0}
   m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 108.72, z: 0}
 --- !u!1 &965133518
 GameObject:
   m_ObjectHideFlags: 3
@@ -1990,7 +1993,10 @@ MonoBehaviour:
     NearClipPlane: 0.1
     FarClipPlane: 5000
     Dutch: 0
+    ModeOverride: 0
     LensShift: {x: 0, y: 0}
+    GateFit: 2
+    m_SensorSize: {x: 1, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -2094,7 +2100,10 @@ MonoBehaviour:
     NearClipPlane: 0.1
     FarClipPlane: 5000
     Dutch: 0
+    ModeOverride: 0
     LensShift: {x: 0, y: 0}
+    GateFit: 2
+    m_SensorSize: {x: 1, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -2116,7 +2125,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8719057234776261651, guid: 960f8edff26d3344a8873e7a7313ca5e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5
+      value: -7.4999976
       objectReference: {fileID: 0}
     - target: {fileID: 8719057234776261651, guid: 960f8edff26d3344a8873e7a7313ca5e, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2128,19 +2137,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8719057234776261651, guid: 960f8edff26d3344a8873e7a7313ca5e, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7086324
+      value: 0.7045742
       objectReference: {fileID: 0}
     - target: {fileID: 8719057234776261651, guid: 960f8edff26d3344a8873e7a7313ca5e, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.03075149
+      value: -0.13213135
       objectReference: {fileID: 0}
     - target: {fileID: 8719057234776261651, guid: 960f8edff26d3344a8873e7a7313ca5e, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.7042446
+      value: -0.6852745
       objectReference: {fileID: 0}
     - target: {fileID: 8719057234776261651, guid: 960f8edff26d3344a8873e7a7313ca5e, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.030561088
+      value: -0.128512
       objectReference: {fileID: 0}
     - target: {fileID: 8719057234776261651, guid: 960f8edff26d3344a8873e7a7313ca5e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2314,7 +2323,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 3
-  m_FollowOffset: {x: 16.1, y: -1.4000003, z: -0.099999994}
+  m_FollowOffset: {x: 3.6000028, y: -1.4000003, z: -0.099999994}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1
@@ -2493,7 +2502,10 @@ MonoBehaviour:
     NearClipPlane: 0.1
     FarClipPlane: 5000
     Dutch: 0
+    ModeOverride: 0
     LensShift: {x: 0, y: 0}
+    GateFit: 2
+    m_SensorSize: {x: 1, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -2533,6 +2545,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodePrefab: {fileID: 5006744555043515279, guid: 956c3b50b1af7584e8d0b75f98038715, type: 3}
   edgePrefab: {fileID: 221769771188850553, guid: e6fd16b1e8dc29941b66bd54d971b934, type: 3}
+  lookTarget: {fileID: 1290530338}
   CreatorModeBtn: {fileID: 503171324}
   ExitCreatorModeBtn: {fileID: 1176902638}
 --- !u!4 &2128867619
