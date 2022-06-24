@@ -30,6 +30,9 @@ public class Arbolinsert : MonoBehaviour
     Vector3 posisionI = new Vector3(-17.65f, 11.24f, -6.86f);
     Vector3 posisionO = new Vector3(-17.65f, 11.24f, -6.86f);
 
+    [SerializeField]
+    Transform LookAtTarget;
+
 
     int c = 0;
     int i = 0;
@@ -79,12 +82,13 @@ public class Arbolinsert : MonoBehaviour
         GameObject newCubo;
         newCubo = Instantiate(cubo, cubo.transform.position, cubo.transform.rotation);
         newCubo.GetComponent<cubito>().posision = posisionO;
+        newCubo.GetComponent<cubito>().managerType = 7;
         newCubo.name = "Cubo" + i;
         newCubo.GetComponent<cubito>().c = c;
         newCubo.GetComponent<cubito>().i = i;
         newCubo.GetComponentInChildren<TMP_Text>().text = x;
         newCubo.tag = "CUBO";
-        
+        LookAtTarget.position = posisionO;
 
     }
     public void inseratarbol()

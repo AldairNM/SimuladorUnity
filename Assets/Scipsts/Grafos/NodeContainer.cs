@@ -12,6 +12,8 @@ public class NodeContainer : MonoBehaviour
     [SerializeField]
     MeshRenderer meshRenderer;
 
+    [SerializeField]
+    public GameObject autoRef;
     public bool isSelected = false;
     Vector2 mousePos;
     float zDistance = 5.0f;
@@ -37,29 +39,64 @@ public class NodeContainer : MonoBehaviour
             }
 
             node.Value = transform.Find("Particle").position;
-            Debug.Log(node.Value);
+            
             
 
             if (Input.GetMouseButtonUp(0))
             {
                 isSelected = false;
-                meshRenderer.materials[0].color = normalColor;
+                if(!GraphComponent.isEdgeMode) SetNormalColor();
+            }
+
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                isSelected = false;
+                SetNormalColor();
             }
         }
+
+    }
+
+    public void SetAutoRef()
+    {
+        autoRef.SetActive(!autoRef.activeSelf);
     }
 
     void OnMouseOver()
     {
+        meshRenderer.materials[0].color = Color.blue;
+
         if (Input.GetMouseButtonDown(0) && !GraphComponent.isCreatorMode)
         {
             isSelected = true;
         }
 
-        meshRenderer.materials[0].color = Color.blue;
+        if (Input.GetMouseButtonDown(0) && GraphComponent.isEdgeMode)
+        {
+            SelectNode();
+        }
     }
 
+    void SelectNode()
+    {
+        if (GraphComponent.fromNodeAux == null)
+        {
+            GraphComponent.fromNodeAux = gameObject;
+            return;
+        }
+        if (GraphComponent.toNodeAux == null)
+        {
+            GraphComponent.toNodeAux = gameObject;
+            return;
+        }
+    }
+
+    public void SetNormalColor()
+    {
+        meshRenderer.materials[0].color = normalColor;
+    }
     void OnMouseExit()
     {
-        if (!isSelected) meshRenderer.materials[0].color = normalColor;
+        if (!isSelected) SetNormalColor();
     }
 }

@@ -14,8 +14,11 @@ public class EdgeContainer : MonoBehaviour
     {
         if (edge != null)
         {
-            lineRenderer.SetPosition(0, edge.From.Value);
-            lineRenderer.SetPosition(1, edge.To.Value);
+            if(lineRenderer)
+            {
+                lineRenderer.SetPosition(0, edge.From.Value);
+                lineRenderer.SetPosition(1, edge.To.Value);
+            }
         }
     }
 }

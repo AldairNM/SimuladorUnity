@@ -23,6 +23,16 @@ public class GraphComponent : MonoBehaviour
     [SerializeField]
     GameObject ExitCreatorModeBtn;
 
+    [SerializeField]
+    GameObject EdgeModeBtn;
+    [SerializeField]
+    GameObject ExitEdgeModeBtn;
+
+    public static GameObject fromNodeAux = null;
+    public static GameObject toNodeAux = null;
+
+    public static bool edgeBand = false;
+
     private Graph<Vector3, float> graph;
 
     GameObject lastNode;
@@ -33,40 +43,92 @@ public class GraphComponent : MonoBehaviour
     Vector3 mouseToWorldPos;
 
     public static bool isCreatorMode = false;
+    public static bool isEdgeMode = false;
+
+    int verifyEdgeInt = 0;
+
+
     // Start is called before the first frame update
     void Start()
     {
         graph = new Graph<Vector3, float>();
-
-        /*
-         var node1 = new Node<Vector3>() { Value = Vector3.zero, NodeColor = Color.red };
-        var node2 = new Node<Vector3>() { Value = Vector3.one, NodeColor = Color.cyan };
-        var edge = new Edge<float, Vector3>() { Value = 1.0f, From = node1, To = node2, EdgeColor = Color.yellow };
-        graph.Nodes.Add(node1);
-        AddGameObjectNode(node1);
-        graph.Nodes.Add(node2);
-        AddGameObjectNode(node2);
-        graph.Edges.Add(edge);
-         */
     }
 
     public void SetCreatorMode(bool value)
     {
         isCreatorMode = value;
+        isEdgeMode = false;
+        ExitEdgeModeBtn.SetActive(false);
+        EdgeModeBtn.SetActive(true);
     }
+
+    public void SetEdgeMode(bool value)
+    {
+        isEdgeMode = value;
+        isCreatorMode = false;
+        ExitCreatorModeBtn.SetActive(false);
+        CreatorModeBtn.SetActive(true);
+    }
+
 
     private void Update()
     {
         if(Input.GetMouseButtonDown(0))
         {
             if (isCreatorMode) CreateNode();
+            //if (isEdgeMode) CreateNode();
         }
-        if(Input.GetKeyDown(KeyCode.E))
+
+
+        if (Input.GetKeyDown(KeyCode.E))
         {
             isCreatorMode = false;
+            isEdgeMode = false;
             ExitCreatorModeBtn.SetActive(false);
             CreatorModeBtn.SetActive(true);
+            ExitEdgeModeBtn.SetActive(false);
+            EdgeModeBtn.SetActive(true);
         }
+
+        if(isEdgeMode)
+        {
+            if (fromNodeAux != null) Debug.Log("FromNodeAux no null");
+            if (toNodeAux != null) Debug.Log("ToNodeAux no null");
+            if (fromNodeAux != null && toNodeAux != null)
+            {
+                if((fromNodeAux.GetComponent<NodeContainer>().node != toNodeAux.GetComponent<NodeContainer>().node))
+                {
+                    verifyEdgeInt = EdgeExist(fromNodeAux.GetComponent<NodeContainer>(), toNodeAux.GetComponent<NodeContainer>());
+                    if (verifyEdgeInt == 3)
+                    {
+                        Debug.Log("creando nuevo node");
+                        AddEdge(fromNodeAux.GetComponent<NodeContainer>().node, toNodeAux.GetComponent<NodeContainer>().node);
+                        Debug.Log("Nuevo Arista | Desde: " + fromNodeAux.GetComponent<NodeContainer>().node.Value + " | Hasta: " + toNodeAux.GetComponent<NodeContainer>().node.Value);
+                        CleanNodesAux();
+                    }
+                }
+                else
+                {
+                    verifyEdgeInt = EdgeExist(fromNodeAux.GetComponent<NodeContainer>(), toNodeAux.GetComponent<NodeContainer>());
+                    if (verifyEdgeInt == 3)
+                    {
+                        Debug.Log("creando nuevo node auto");
+                        AddEdge(fromNodeAux.GetComponent<NodeContainer>().node, toNodeAux.GetComponent<NodeContainer>().node, true);
+                        Debug.Log("Nuevo Arista | Desde: " + fromNodeAux.GetComponent<NodeContainer>().node.Value + " | Hasta: " + toNodeAux.GetComponent<NodeContainer>().node.Value);
+                        CleanNodesAux();
+                    }
+                }
+            }
+        }
+    }
+
+    void CleanNodesAux()
+    {
+        fromNodeAux.GetComponent<NodeContainer>().SetNormalColor();
+        toNodeAux.GetComponent<NodeContainer>().SetNormalColor();
+        fromNodeAux = null;
+        toNodeAux = null;
+        DebugAllEdges();
     }
 
     void CreateNode()
@@ -77,11 +139,18 @@ public class GraphComponent : MonoBehaviour
         AddNode(mouseToWorldPos);
     }
 
-    void AddEdge(Node<Vector3> fromNode, Node<Vector3> toNode)
+    void AddEdge(Node<Vector3> fromNode, Node<Vector3> toNode, bool isAutoRef = false)
     {
         var edge = new Edge<float, Vector3>() { Value = 1.0f, From = fromNode, To = toNode, EdgeColor = Color.yellow };
         graph.Edges.Add(edge);
-        AddGameObjectEdge(edge);
+        if (!isAutoRef) AddGameObjectEdge(edge);
+        else
+        {
+            fromNodeAux.GetComponent<NodeContainer>().SetAutoRef();
+            fromNodeAux.GetComponent<NodeContainer>().autoRef.AddComponent<EdgeContainer>();
+            fromNodeAux.GetComponent<NodeContainer>().autoRef.GetComponent<EdgeContainer>().edge = edge;
+            gameObjectsEdges.Add(fromNodeAux.GetComponent<NodeContainer>().autoRef);
+        }
     }
 
     void AddNode(Vector3 anyPosition)
@@ -110,5 +179,60 @@ public class GraphComponent : MonoBehaviour
         GameObject gameObjectEdge = Instantiate(edgePrefab, Vector3.zero, Quaternion.identity);
         gameObjectEdge.GetComponent<EdgeContainer>().edge = newEdge;
         gameObjectsEdges.Add(gameObjectEdge);
+    }
+
+    void DebugAllNodes()
+    {
+        foreach(GameObject currentNode in gameObjectsNodes)
+        {
+            Debug.Log(currentNode.GetComponent<NodeContainer>().node.Value);
+        }
+
+        Debug.Log("Total Nodes: " + gameObjectsNodes.Count);
+    }
+
+    int EdgeExist(NodeContainer fromToVerify, NodeContainer toToVerify)
+    {
+        bool isFromTo = false;
+        bool isToFrom = false;
+        foreach (GameObject currentEdge in gameObjectsEdges)
+        {
+            if ((currentEdge.GetComponent<EdgeContainer>().edge.From == fromToVerify.node) && (currentEdge.GetComponent<EdgeContainer>().edge.To == toToVerify.node))
+            {
+               
+                isFromTo = true;
+            }
+            if ((currentEdge.GetComponent<EdgeContainer>().edge.To == fromToVerify.node) && (currentEdge.GetComponent<EdgeContainer>().edge.From == toToVerify.node))
+            {
+                isToFrom = true;
+            }
+        }
+
+        if (isFromTo && !isToFrom)
+        {
+            Debug.Log("Conexión en un sentido From To");
+            return 1;
+        }
+        if (!isFromTo && isToFrom)
+        {
+            Debug.Log("Conexión en un sentido To From");
+            return 2;
+        }
+
+        if(!isFromTo && !isToFrom)
+        {
+            return 3;
+        }
+
+        return 0;
+    }
+    void DebugAllEdges()
+    {
+        foreach (GameObject currentEdge in gameObjectsEdges)
+        {
+            Debug.Log(currentEdge.GetComponent<EdgeContainer>().edge.From.Value+ currentEdge.GetComponent<EdgeContainer>().edge.To.Value);
+        }
+
+        Debug.Log("Total Edges: " + gameObjectsEdges.Count);
     }
 }
