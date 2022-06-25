@@ -24,6 +24,10 @@ public class union : MonoBehaviour
     {
         JoinInicio.GetComponent<UnionJoin>().cubo = cubo;
     }
+    public void SetCuboF(GameObject cubo)
+    {
+        JoinFinal.GetComponent<UnionJoin>().cuboFinalJoin = cubo;
+    }
 
     // Start is called before the first frame update
     void Start()

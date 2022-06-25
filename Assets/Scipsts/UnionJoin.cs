@@ -84,7 +84,7 @@ public class UnionJoin : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log(other);
-        if(time > 3 && !cuboFinalJoin && other.gameObject.tag=="CUBO" && !isInitJoin)
+        if(time > 0.5f && !cuboFinalJoin && other.gameObject.tag=="CUBO" && !isInitJoin)
         {
             cuboFinalJoin = other.gameObject;
             cuboFinalJoin.GetComponent<cubito>().canMove = false;

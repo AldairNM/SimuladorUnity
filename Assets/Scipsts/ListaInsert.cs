@@ -326,12 +326,15 @@ public class ListaInsert : MonoBehaviour
         newunion.name = "Union" + i;
         newunion.GetComponent<union>().i = i;
         newunion.tag = "UNION";
-
-
         newunion.GetComponent<union>().SetCubo(newCubo);
 
-        LastCube = newCubo;
-        Debug.Log(LastCube);
+
+        unionclon = GameObject.Find("Union" + (i-1));
+
+        unionclon.GetComponent<union>().SetCuboF(newCubo);
+
+        
+
         posisionO = posisionO + espacio;
         i = c;
         Debug.Log(lista.head.data + " " + lista.tail.data);
