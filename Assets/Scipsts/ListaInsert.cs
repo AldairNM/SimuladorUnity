@@ -28,6 +28,7 @@ public class ListaInsert : MonoBehaviour
     GameObject vcm;
 
 
+    public static GameObject LastCube;
 
     public TMP_InputField valorE;
 
@@ -278,6 +279,7 @@ public class ListaInsert : MonoBehaviour
         i = w;
         c = c + 1;
 
+
         for (int a = w; a >= w && a < c; a++)
         {
             cuboclon = GameObject.Find("Cubo" + a);
@@ -328,6 +330,8 @@ public class ListaInsert : MonoBehaviour
 
         newunion.GetComponent<union>().SetCubo(newCubo);
 
+        LastCube = newCubo;
+        Debug.Log(LastCube);
         posisionO = posisionO + espacio;
         i = c;
         Debug.Log(lista.head.data + " " + lista.tail.data);

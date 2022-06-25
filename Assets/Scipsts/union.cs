@@ -66,6 +66,8 @@ public class union : MonoBehaviour
         name = "Union" + i;
         animator.enabled = true;
         animator.SetBool("isCurrent", true);
+        JoinFinal.GetComponent<UnionJoin>().RefreshJoinPosition();
+
     }
     public void cambioO()
     {
@@ -73,5 +75,6 @@ public class union : MonoBehaviour
         name = "Union" + i;
         animator.enabled = true;
         animator.SetBool("isCurrent", true);
+        JoinFinal.GetComponent<UnionJoin>().RefreshJoinPosition();
     }
 }

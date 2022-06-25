@@ -21,6 +21,7 @@ public class UnionJoin : MonoBehaviour
 
     public GameObject cubo;
     public GameObject cuboFinalJoin;
+    public GameObject cuboAux;
 
     [SerializeField]
     bool isInitJoin = false;
@@ -38,6 +39,13 @@ public class UnionJoin : MonoBehaviour
         if (Input.GetMouseButtonDown(0)) isSelected = true;
         meshRenderer.materials[0].color = Color.blue;
     }
+
+    public void RefreshJoinPosition()
+    {
+        if (cuboFinalJoin && !isInitJoin) cuboFinalJoin = ListaInsert.LastCube;
+    }
+
+
 
     // Update is called once per frame
     void Update()
