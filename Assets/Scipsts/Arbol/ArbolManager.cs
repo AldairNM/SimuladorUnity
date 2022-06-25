@@ -13,8 +13,6 @@ public class ArbolManager : MonoBehaviour
     [SerializeField]
     GameObject nodePrefab;
 
-    GameObject lastNode;
-
     List<GameObject> gameObjectsNodes = new List<GameObject>();
 
     ArbolBinarioOrdenado arbol;
@@ -33,14 +31,16 @@ public class ArbolManager : MonoBehaviour
         public class Nodo
         {
             public int info;
+            public Vector3 position;
+            public Vector3 particlePosition;
             public Nodo izq, der;
         }
 
         Nodo raiz;
 
         public int altura = 0;
-
-        public int xPos = 0;
+        float distanceFactor = 3;
+        public float xPos = 0;
         public int ladoUltimaInsercion = 0; //-1 izquierda 1 derecha
         public ArbolBinarioOrdenado()
         {
@@ -49,6 +49,7 @@ public class ArbolManager : MonoBehaviour
 
         public Nodo Insertar(int info)
         {
+            distanceFactor = 1;
             altura = 0;
             xPos = 0;
             Nodo nuevo;
@@ -67,13 +68,11 @@ public class ArbolManager : MonoBehaviour
                     anterior = reco;
                     if (info < reco.info)
                     {
-                        xPos -= 1;
                         reco = reco.izq;
                         altura++;
                     }
                     else
                     {
-                        xPos += 1;
                         reco = reco.der;
                         altura++;
                     }
@@ -81,14 +80,16 @@ public class ArbolManager : MonoBehaviour
                 }
                 if (info < anterior.info)
                 {
+                    nuevo.position.z = anterior.position.z - 1;
                     anterior.izq = nuevo;
-                    //ladoUltimaInsercion = -1;
                 }
                 else
                 {
+                    nuevo.position.z = anterior.position.z + 1;
                     anterior.der = nuevo;
-                    //ladoUltimaInsercion = 1;
                 }
+
+                nuevo.position.y = -altura;
             }
 
             return nuevo;
@@ -199,13 +200,10 @@ public class ArbolManager : MonoBehaviour
     {
         if (VerificarValorRepetido(value)) return;
         ArbolBinarioOrdenado.Nodo node = arbol.Insertar(value);
-        currentPosition.z = arbol.xPos;
-        currentPosition.y = -arbol.altura;
-        GameObject gameObjectNode = Instantiate(nodePrefab, currentPosition, Quaternion.identity);
+        GameObject gameObjectNode = Instantiate(nodePrefab, Vector3.zero, Quaternion.identity);
         gameObjectNode.GetComponent<NodeArbolContainer>().node = node;
-        gameObjectNode.GetComponent<NodeArbolContainer>().SetValue(value);
+        gameObjectNode.GetComponent<NodeArbolContainer>().UpdateValue(value);
         gameObjectsNodes.Add(gameObjectNode);
-        lastNode = gameObjectNode;
-        lookTarget.position = currentPosition;
+        lookTarget.position = gameObjectNode.transform.position;
     }
 }
