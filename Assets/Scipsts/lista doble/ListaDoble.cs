@@ -9,6 +9,7 @@ using TMPro;
 
 public class ListaDoble : MonoBehaviour
 {
+    public Transform LookAt;
     public GameObject cubo;
     public GameObject union;
     public GameObject union1;
@@ -121,6 +122,8 @@ public class ListaDoble : MonoBehaviour
             newCubo.GetComponentInChildren<TMP_Text>().text = valor;
             newCubo.tag = "CUBO";
 
+            LookAt.position = posisionO;
+
             GameObject newunion;
             newunion = Instantiate(union, cubo.transform.position, union.transform.rotation);
             newunion.GetComponent<union>().posision = posision + unid + uni2;
@@ -178,6 +181,7 @@ public class ListaDoble : MonoBehaviour
             newCubo.GetComponent<cubito>().i = i;
             newCubo.GetComponentInChildren<TMP_Text>().text = valor;
             newCubo.tag = "CUBO";
+            LookAt.position = posisionO;
 
             GameObject newunion;
             newunion = Instantiate(union, cubo.transform.position, union.transform.rotation);
@@ -220,6 +224,7 @@ public class ListaDoble : MonoBehaviour
             newCubo.GetComponent<cubito>().i = i;
             newCubo.GetComponentInChildren<TMP_Text>().text = valor;
             newCubo.tag = "CUBO";
+            LookAt.position = posisionO;
 
             GameObject newunion;
             newunion = Instantiate(union, cubo.transform.position, union.transform.rotation);
@@ -343,6 +348,7 @@ public class ListaDoble : MonoBehaviour
         newCubo.GetComponent<cubito>().i = i;
         newCubo.GetComponentInChildren<TMP_Text>().text = valor;
         newCubo.tag = "CUBO";
+        LookAt.position = posisionO;
 
         GameObject newunion;
         newunion = Instantiate(union, cubo.transform.position, union.transform.rotation);

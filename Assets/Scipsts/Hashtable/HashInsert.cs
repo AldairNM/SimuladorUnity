@@ -61,7 +61,7 @@ public class HashInsert : MonoBehaviour
             posisionO = posisionO - espacio;
             cubos[x] = newCubo;
             i = i + 1;
-            lookAtTransform.position = newCubo.GetComponent<cubito>().posision;
+            lookAtTransform.position = posisionO;
         }
     }
     public void Insertarhash()

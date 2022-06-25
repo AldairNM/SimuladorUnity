@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6308849850581254119}
   - component: {fileID: 3491991819864971814}
   - component: {fileID: 186848813637003224}
+  - component: {fileID: -6008729249173772271}
   m_Layer: 0
   m_Name: Union 1
   m_TagString: Untagged
@@ -74,6 +75,47 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!23 &-6008729249173772271
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 199612636222364856}
+  m_Enabled: 0
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: de9a97fc0ef0b8a458c03d7ee2795785, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &2947377191220825457
 GameObject:
   m_ObjectHideFlags: 0
@@ -189,6 +231,7 @@ MonoBehaviour:
   joinRef: {fileID: 4894529443851661657}
   cubo: {fileID: 0}
   cuboFinalJoin: {fileID: 0}
+  cuboAux: {fileID: 0}
   isInitJoin: 1
 --- !u!1 &3077228409116159420
 GameObject:
@@ -384,6 +427,7 @@ MonoBehaviour:
   joinRef: {fileID: 2371590741477334149}
   cubo: {fileID: 0}
   cuboFinalJoin: {fileID: 0}
+  cuboAux: {fileID: 0}
   isInitJoin: 0
 --- !u!1 &5085880042997351406
 GameObject:
