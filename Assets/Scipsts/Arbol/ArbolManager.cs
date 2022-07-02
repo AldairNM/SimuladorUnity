@@ -95,6 +95,47 @@ public class ArbolManager : MonoBehaviour
             return nuevo;
         }
 
+        public Nodo Buscar(int info)
+        {
+            Nodo reco;
+            reco = raiz;
+            while (reco != null)
+            {
+
+                if (reco.info == info)
+                {
+                    return reco;
+                }
+
+                reco = reco.der;
+                altura++;
+            }
+            return reco;
+        }
+
+        public Nodo ObtenerMenor(int info)
+        {
+            Nodo aux, menor;
+            aux = Buscar(info);
+            menor = aux;
+            BuscarMenor(aux, ref menor);
+
+            return menor;
+        }
+
+        private void BuscarMenor(Nodo reco, ref Nodo menor)
+        {
+            if (reco != null)
+            {
+                if (reco.info < menor.info)
+                {
+                    menor = reco;
+                    Debug.Log("Nuevo Menor: " + menor.info);
+                }
+                BuscarMenor(reco.izq, ref menor);
+                BuscarMenor(reco.der, ref menor);
+            }
+        }
 
         private void ImprimirPre(Nodo reco)
         {
@@ -105,6 +146,8 @@ public class ArbolManager : MonoBehaviour
                 ImprimirPre(reco.der);
             }
         }
+
+
 
         public void ImprimirPre()
         {
@@ -151,15 +194,38 @@ public class ArbolManager : MonoBehaviour
 
     public void Delete(InputField inputFieldTxt)
     {
-
-        EliminarNodo(Int16.Parse(inputFieldTxt.text));
+        int valorBuscar = Int16.Parse(inputFieldTxt.text);
+        
+        EliminarNodo(valorBuscar, arbol.ObtenerMenor(valorBuscar).info);
     }
 
-    public void EliminarNodo(int info)
+    public void EliminarNodo(int info, int menorValue)
     {
         ArbolBinarioOrdenado arbolAux = new ArbolBinarioOrdenado();
         arbol = null;
         List<int> values = new List<int>();
+        GameObject menor;
+        int deleteValue = 0;
+
+        bool cambiado = false;
+
+        foreach (GameObject obj in gameObjectsNodes)
+        {
+            if (obj.GetComponent<NodeArbolContainer>().value == info && !cambiado)
+            {
+                deleteValue = obj.GetComponent<NodeArbolContainer>().value;
+                obj.GetComponent<NodeArbolContainer>().value = menorValue;
+                cambiado = true;
+            }
+            else
+            {
+                if (obj.GetComponent<NodeArbolContainer>().value == menorValue)
+                {
+                    obj.GetComponent<NodeArbolContainer>().value = deleteValue;
+                }
+            }
+        }
+
         foreach (GameObject obj in gameObjectsNodes)
         {
             if (obj.GetComponent<NodeArbolContainer>().value != info) values.Add(obj.GetComponent<NodeArbolContainer>().value);
@@ -205,5 +271,6 @@ public class ArbolManager : MonoBehaviour
         gameObjectNode.GetComponent<NodeArbolContainer>().UpdateValue(value);
         gameObjectsNodes.Add(gameObjectNode);
         lookTarget.position = gameObjectNode.transform.position;
+        InprimirArbol();
     }
 }
