@@ -55,12 +55,15 @@ public class union : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Inicio de la unión
-        lineRenderer.SetPosition(0, JoinInicio.transform.localPosition);
+        if(lineRenderer!=null)
+        {
+            //Inicio de la unión
+            lineRenderer.SetPosition(0, JoinInicio.transform.localPosition);
 
 
-        //Final de la unión
-        lineRenderer.SetPosition(1, JoinFinal.transform.localPosition);
+            //Final de la unión
+            lineRenderer.SetPosition(1, JoinFinal.transform.localPosition);
+        }
         float velo = swayAmoun * Time.deltaTime;
         transform.position = Vector3.MoveTowards(transform.position, posision, velo);
     }
@@ -70,7 +73,7 @@ public class union : MonoBehaviour
         name = "Union" + i;
         animator.enabled = true;
         animator.SetBool("isCurrent", true);
-        JoinFinal.GetComponent<UnionJoin>().RefreshJoinPosition();
+        if (JoinFinal != null) JoinFinal.GetComponent<UnionJoin>().RefreshJoinPosition();
 
     }
     public void cambioO()
@@ -79,6 +82,6 @@ public class union : MonoBehaviour
         name = "Union" + i;
         animator.enabled = true;
         animator.SetBool("isCurrent", true);
-        JoinFinal.GetComponent<UnionJoin>().RefreshJoinPosition();
+        if(JoinFinal!=null) JoinFinal.GetComponent<UnionJoin>().RefreshJoinPosition();
     }
 }

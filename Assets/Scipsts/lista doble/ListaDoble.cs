@@ -122,7 +122,6 @@ public class ListaDoble : MonoBehaviour
             newCubo.GetComponentInChildren<TMP_Text>().text = valor;
             newCubo.tag = "CUBO";
 
-            LookAt.position = posisionO;
 
             GameObject newunion;
             newunion = Instantiate(union, cubo.transform.position, union.transform.rotation);
@@ -199,6 +198,9 @@ public class ListaDoble : MonoBehaviour
 
 
             posisionI = posisionI - espacio;
+
+
+            LookAt.position = posisionI;
             i = c;
         }
 
@@ -224,7 +226,7 @@ public class ListaDoble : MonoBehaviour
             newCubo.GetComponent<cubito>().i = i;
             newCubo.GetComponentInChildren<TMP_Text>().text = valor;
             newCubo.tag = "CUBO";
-            LookAt.position = posisionO;
+            LookAt.position = posision;
 
             GameObject newunion;
             newunion = Instantiate(union, cubo.transform.position, union.transform.rotation);
@@ -259,7 +261,9 @@ public class ListaDoble : MonoBehaviour
                 newCubo.GetComponentInChildren<TMP_Text>().text = valor;
                 newCubo.tag = "CUBO";
 
-         
+
+
+
                 Vector3 uni2 = new Vector3(0, 0.3f, 0);
                 GameObject newunion;
                 newunion = Instantiate(union, cubo.transform.position, union.transform.rotation);
@@ -277,6 +281,8 @@ public class ListaDoble : MonoBehaviour
 
 
                 posisionO = posisionO + espacio;
+
+                LookAt.position = posisionO;
             }
         }
         Debug.Log(lista.head.data + " " + lista.tail.data);
@@ -317,6 +323,12 @@ public class ListaDoble : MonoBehaviour
         uniones2 = GameObject.FindGameObjectsWithTag("UNION2");
         foreach (GameObject cubo in cubos)
         {
+            if (cubo.GetComponent<cubito>().i == w )
+            {
+
+                LookAt.position = cubo.transform.position;
+            }
+
             if (cubo.GetComponent<cubito>().i >= w)
             {
                 cubo.GetComponent<cubito>().cambioI();
@@ -348,7 +360,6 @@ public class ListaDoble : MonoBehaviour
         newCubo.GetComponent<cubito>().i = i;
         newCubo.GetComponentInChildren<TMP_Text>().text = valor;
         newCubo.tag = "CUBO";
-        LookAt.position = posisionO;
 
         GameObject newunion;
         newunion = Instantiate(union, cubo.transform.position, union.transform.rotation);
@@ -366,6 +377,8 @@ public class ListaDoble : MonoBehaviour
 
 
         posisionO = posisionO + espacio;
+
+
         i = c;
         Debug.Log(lista.head.data + " " + lista.tail.data);
     }
@@ -481,6 +494,12 @@ public class ListaDoble : MonoBehaviour
         uniones2 = GameObject.FindGameObjectsWithTag("UNION2");
         foreach (GameObject cubo in cubos)
         {
+            if(cubo.GetComponent<cubito>().i == w)
+            {
+
+                LookAt.position = cubo.transform.position;
+            }
+
             if (cubo.GetComponent<cubito>().i >= w)
             {
                 cubo.GetComponent<cubito>().cambioO();

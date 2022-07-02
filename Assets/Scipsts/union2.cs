@@ -52,12 +52,16 @@ public class union2 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(lineRenderer!=null)
+        {
+            lineRenderer.SetPosition(0, JoinInicio.transform.localPosition);
+
+
+            //Final de la unión
+            lineRenderer.SetPosition(1, JoinFinal.transform.localPosition);
+        }
         //Inicio de la unión
-        lineRenderer.SetPosition(0, JoinInicio.transform.localPosition);
-
-
-        //Final de la unión
-        lineRenderer.SetPosition(1, JoinFinal.transform.localPosition);
+        
         float velo = swayAmoun * Time.deltaTime;
         transform.position = Vector3.MoveTowards(transform.position, posision, velo);
     }
