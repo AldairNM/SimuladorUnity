@@ -52,6 +52,10 @@ public class GraphComponent : MonoBehaviour
     int nodeNumber = 0;
 
     bool hasNumber = false;
+
+    [SerializeField]
+    Button exitCreateModeBtn;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -88,7 +92,11 @@ public class GraphComponent : MonoBehaviour
     {
         if(Input.GetMouseButtonDown(0))
         {
-            if (isCreatorMode && hasNumber) CreateNode();
+            if (isCreatorMode && hasNumber)
+            {
+                CreateNode();
+                exitCreateModeBtn.onClick.Invoke();
+            }
             //if (isEdgeMode) CreateNode();
         }
 
