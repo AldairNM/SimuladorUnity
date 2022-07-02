@@ -2050,7 +2050,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7767296, y: 1}
+    m_SensorSize: {x: 1.7793522, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -2774,7 +2774,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Active FreeLook
+  m_Text: "Activar C\xE1mara   Libre"
 --- !u!222 &1266612453
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3370,7 +3370,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Exit FreeLook
+  m_Text: "Desactivar C\xE1mara Libre"
 --- !u!222 &1642077066
 CanvasRenderer:
   m_ObjectHideFlags: 0
