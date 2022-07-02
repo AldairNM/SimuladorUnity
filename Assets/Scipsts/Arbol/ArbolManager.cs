@@ -68,6 +68,7 @@ public class ArbolManager : MonoBehaviour
                 while (reco != null)
                 {
                     anterior = reco;
+
                     if (info < reco.info)
                     {
                         reco = reco.izq;
@@ -78,16 +79,19 @@ public class ArbolManager : MonoBehaviour
                         reco = reco.der;
                         altura++;
                     }
-                    
+
                 }
+                Debug.Log(altura);
                 if (info < anterior.info)
                 {
-                    nuevo.position.z = anterior.position.z - 1;
+                    if(altura == 1) nuevo.position.z = anterior.position.z - 2f;
+                    else  nuevo.position.z = anterior.position.z - 1;
                     anterior.izq = nuevo;
                 }
                 else
                 {
-                    nuevo.position.z = anterior.position.z + 1;
+                    if(altura == 1) nuevo.position.z = anterior.position.z + 2f;
+                    else nuevo.position.z = anterior.position.z + 1;
                     anterior.der = nuevo;
                 }
 
@@ -140,7 +144,6 @@ public class ArbolManager : MonoBehaviour
         {
             if (reco != null)
             {
-                Debug.Log(reco.info + " ");
                 ImprimirPre(reco.izq);
                 ImprimirPre(reco.der);
             }
