@@ -38,6 +38,8 @@ public class ArbolManager : MonoBehaviour
 
         Nodo raiz;
 
+        Nodo aux;
+
         public int altura = 0;
         float distanceFactor = 3;
         public float xPos = 0;
@@ -95,28 +97,25 @@ public class ArbolManager : MonoBehaviour
             return nuevo;
         }
 
-        public Nodo Buscar(int info)
-        {
-            Nodo reco;
-            reco = raiz;
-            while (reco != null)
-            {
 
+        private void Buscar(Nodo reco, ref Nodo aux, int info)
+        {
+            if (reco != null)
+            {
                 if (reco.info == info)
                 {
-                    return reco;
+                    aux = reco;
                 }
-
-                reco = reco.der;
-                altura++;
+                Buscar(reco.izq, ref aux, info);
+                Buscar(reco.der, ref aux, info);
             }
-            return reco;
         }
 
         public Nodo ObtenerMenor(int info)
         {
-            Nodo aux, menor;
-            aux = Buscar(info);
+            Nodo menor;
+            aux = null;
+            Buscar(raiz, ref aux, info);
             menor = aux;
             BuscarMenor(aux, ref menor);
 
@@ -195,7 +194,8 @@ public class ArbolManager : MonoBehaviour
     public void Delete(InputField inputFieldTxt)
     {
         int valorBuscar = Int16.Parse(inputFieldTxt.text);
-        
+        if(arbol.ObtenerMenor(valorBuscar)==null) Debug.Log("Es nulo");
+        Debug.Log(valorBuscar);
         EliminarNodo(valorBuscar, arbol.ObtenerMenor(valorBuscar).info);
     }
 
