@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class NodeContainer : MonoBehaviour
 {
@@ -18,6 +19,8 @@ public class NodeContainer : MonoBehaviour
     Vector2 mousePos;
     float zDistance = 5.0f;
     Vector3 mouseToWorldPos;
+    [SerializeField]
+    Text numberTxt;
 
     private void Start()
     {
@@ -57,6 +60,10 @@ public class NodeContainer : MonoBehaviour
 
     }
 
+    public void SetNumber(int value)
+    {
+        numberTxt.text = value + "";
+    }
     public void SetAutoRef()
     {
         autoRef.SetActive(!autoRef.activeSelf);

@@ -19,6 +19,7 @@ public class Graph <TNodeType, TEdgeType>
 public class Node<TNodeType>
 {
     public Color NodeColor { get; set; }
+    public int Number { get; set; }
     public TNodeType Value { get; set; }
 }
 

@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 [ExecuteInEditMode]
 public class GraphComponent : MonoBehaviour
@@ -47,13 +49,24 @@ public class GraphComponent : MonoBehaviour
 
     int verifyEdgeInt = 0;
 
+    int nodeNumber = 0;
 
+    bool hasNumber = false;
     // Start is called before the first frame update
     void Start()
     {
         graph = new Graph<Vector3, float>();
     }
 
+    public void verifyNumber(InputField numberInputField)
+    {
+        if (numberInputField.text.Length == 0) hasNumber = false;
+        else
+        {
+            nodeNumber = Int16.Parse(numberInputField.text);
+            hasNumber = true;
+        }
+    }
     public void SetCreatorMode(bool value)
     {
         isCreatorMode = value;
@@ -75,7 +88,7 @@ public class GraphComponent : MonoBehaviour
     {
         if(Input.GetMouseButtonDown(0))
         {
-            if (isCreatorMode) CreateNode();
+            if (isCreatorMode && hasNumber) CreateNode();
             //if (isEdgeMode) CreateNode();
         }
 
@@ -155,16 +168,18 @@ public class GraphComponent : MonoBehaviour
 
     void AddNode(Vector3 anyPosition)
     {
-        var newNode = new Node<Vector3>() { Value = anyPosition, NodeColor = Color.red };
+        var newNode = new Node<Vector3>() { Value = anyPosition, Number = nodeNumber, NodeColor = Color.red };
         graph.Nodes.Add(newNode); //Crea un nodo y lo agrega al grafo
         AddGameObjectNode(newNode); //Referencia el nodo en el gameobject
 
     }
 
+
     void AddGameObjectNode(Node<Vector3> newNode)
     {
         GameObject gameObjectNode = Instantiate(nodePrefab, newNode.Value, Quaternion.identity);
         gameObjectNode.GetComponent<NodeContainer>().node = newNode;
+        gameObjectNode.GetComponent<NodeContainer>().SetNumber(nodeNumber);
         gameObjectsNodes.Add(gameObjectNode);
         if(gameObjectsNodes.Count>1)
         {
