@@ -11,6 +11,8 @@ public class ArrayInsert : MonoBehaviour
     public TMP_InputField tamaño1;
     public TMP_InputField tamaño2;
     public GameObject valorI;
+    public TMP_InputField IndiceI;
+    public TMP_InputField IndiceE;
     public GameObject cuboclon;
     GameObject[] cubos;
     GameObject[] cubos2;
@@ -59,13 +61,13 @@ public class ArrayInsert : MonoBehaviour
     }
     public void eliminar()
     {
-        if (c>=0)
+        if (c >= 0)
         {
             int xd = c - 1;
             cuboclon = GameObject.Find("Cubo" + xd);
             cuboclon.GetComponentInChildren<TMP_Text>().text = " ";
             cubos3[c] = cuboclon.GetComponentInChildren<TMP_Text>().text;
-            if (c!=0)
+            if (c != 0)
             {
                 c--;
             }
@@ -73,6 +75,36 @@ public class ArrayInsert : MonoBehaviour
         Debug.Log(c);
 
     }
+    public void ingresar1()
+    {
+        
+        int indicexd = int.Parse(IndiceI.text);
+        if (indicexd >= 0 && indicexd < i)
+        {
+            string valor = valorI.GetComponent<TMP_Text>().text;
+            string indice = IndiceI.text;
+            cuboclon = GameObject.Find("Cubo" + indice);
+            cuboclon.GetComponentInChildren<TMP_Text>().text = valor;
+            c = indicexd;
+            cubos3[c] = cuboclon.GetComponentInChildren<TMP_Text>().text;
+        }
+        c = i;
+    }
+
+    public void eliminar1()
+    {
+        int xd = int.Parse(IndiceE.text);
+        if (xd >= 0 && xd < i)
+        {
+            cuboclon = GameObject.Find("Cubo" + xd);
+            cuboclon.GetComponentInChildren<TMP_Text>().text = " ";
+            c = xd;
+            cubos3[c] = cuboclon.GetComponentInChildren<TMP_Text>().text;
+        }
+        c = i;
+
+    }
+
     public void aumentar()
     {
         posisionO = new Vector3(-16.52f, 1.02f, -11.12f);

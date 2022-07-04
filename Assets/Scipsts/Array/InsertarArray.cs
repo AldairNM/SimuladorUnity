@@ -8,7 +8,7 @@ public class InsertarArray : MonoBehaviour
     public GameObject insert1_1;
     public GameObject tamano_1;
     public GameObject tamano_2;
-    public Button eliminar1;
+    public GameObject eliminar1;
     // Start is called before the first frame update
     void Start()
     {
