@@ -69,9 +69,9 @@ public class HashInsert : MonoBehaviour
 
         string valor = valueValorString.GetComponent<TMP_Text>().text;
         int valor3 = int.Parse(valueValor.text);
-        Vector3 espacio = new Vector3(0, 1.44f, 0);
-        Vector3 espacio2 = new Vector3(0, 0, 1.68f);
-        Vector3 uni = new Vector3(0, 0, 0.76f);
+        Vector3 espacio = new Vector3(0, 0, 1.25f);
+        Vector3 espacio2 = new Vector3(0, 0, 2.3f);
+        Vector3 uni = new Vector3(0, 0, 1f);
         Vector3 ubi = new Vector3(-16.75f, 8.64f, -11.082f);
         int i2 = 0;
 
@@ -99,14 +99,15 @@ public class HashInsert : MonoBehaviour
             }
             GameObject newunion;
             newunion = Instantiate(union, cubo.transform.position, union.transform.rotation);
-            newunion.GetComponent<union>().posision = ubi + uni + uni + (uni / 2);
+            newunion.GetComponent<union>().posision = ubi + uni + espacio;
             newunion.name = "Union" + i2;
             newunion.GetComponent<union>().i = i2;
+            newunion.GetComponent<union>().c = c;
             newunion.tag = "UNION";
 
             GameObject newValue;
             newValue = Instantiate(value, cubo.transform.position, value.transform.rotation);
-            newValue.GetComponent<valuec>().posision = ubi + uni + uni + uni + espacio2;
+            newValue.GetComponent<valuec>().posision = ubi + uni + espacio + espacio2 ;
             newValue.name = "Value" + valor3;
             newValue.GetComponent<valuec>().c = c;
             newValue.GetComponent<valuec>().i = i2;
@@ -116,6 +117,7 @@ public class HashInsert : MonoBehaviour
             lookAtTransform.position = newValue.GetComponent<valuec>().posision;
             CubitosXD.Add(newunion, newValue);
             hashtableXD = new Hashtable(CubitosXD);
+            c++;
 
         }
         else
@@ -124,6 +126,7 @@ public class HashInsert : MonoBehaviour
             newunion = Instantiate(union, cubo.transform.position, union.transform.rotation);
             newunion.GetComponent<union>().posision = ubi + uni;
             newunion.name = "Union" + i2;
+            newunion.GetComponent<union>().c = c;
             newunion.GetComponent<union>().i = i2;
             newunion.tag = "UNION";
 
@@ -139,6 +142,7 @@ public class HashInsert : MonoBehaviour
             lookAtTransform.position = newValue.GetComponent<valuec>().posision;
             CubitosXD.Add(newunion, newValue);
             hashtableXD = new Hashtable(CubitosXD);
+            c++;
         }
 
         Debug.Log(hashtableXD.Count);
@@ -150,51 +154,58 @@ public class HashInsert : MonoBehaviour
     {
         int w = int.Parse(valueValorE.text);
         int z = 0;
-        Vector3 uni2 = new Vector3(0, 0, 0);
-        Vector3 uni21 = new Vector3(0, 0, 0);
-        Vector3 espacio2 = new Vector3(0, 0, 1.68f);
-        Vector3 uni = new Vector3(0, 0, 0.76f);
-        Vector3 espacio = new Vector3(0, 1.44f, 0);
+        int a = 0;
+        Vector3 espacio = new Vector3(0, 0, 1.25f);
+        Vector3 espacio2 = new Vector3(0, 0, 2.3f);
+        Vector3 uni = new Vector3(0, 0, 1f);
         values = GameObject.FindGameObjectsWithTag("VALUE");
         foreach (GameObject value in values)
         {
             if (value.GetComponent<valuec>().d == w)
             {
-                z = value.GetComponent<valuec>().d;
-                uni2 = new Vector3(0, 0, 0);
-                uni21 = new Vector3(0, 0, 0);
+                valueclon = value;
+                z = value.GetComponent<valuec>().c;
+                a = value.GetComponent<valuec>().i;
+
             }
         }
-
-        //unionclon = GameObject.Find("Union" + z);
-        //Destroy(unionclon);
-        valueclon = GameObject.Find("Value" + z);
-        Destroy(valueclon);
-
-        /*uniones = GameObject.FindGameObjectsWithTag("UNION");
+        uniones = GameObject.FindGameObjectsWithTag("UNION");
         foreach (GameObject union in uniones)
         {
-            if (union.GetComponent<union>().i == z)
+            if (union.GetComponent<union>().c == z)
             {
-                union.GetComponent<union>().posision = union.transform.position - espacio2 - espacio2 - uni2;
-                if (uni2.z< (uni / 2).z) 
-                {
-                    uni2 = uni2 + (uni / 2);
-                } 
+                unionclon = union;
+
             }
-        }*/
+        }
+        Destroy(valueclon);
+        Destroy(unionclon);
+
+        uniones = GameObject.FindGameObjectsWithTag("UNION");
+        foreach (GameObject union in uniones)
+        {
+            if (union.GetComponent<union>().i == a)
+            {
+                if (union.GetComponent<union>().c > z)
+                {
+                    union.GetComponent<union>().posision = union.transform.position - uni - espacio2 - espacio;
+
+                }
+            }
+        }
 
         values = GameObject.FindGameObjectsWithTag("VALUE");
         foreach (GameObject value in values)
         {
-            if (value.GetComponent<valuec>().d == z)
+            if (value.GetComponent<valuec>().i == a)
             {
-                value.GetComponent<valuec>().posision=value.transform.position - espacio2 - espacio2-uni21;
-                if (uni21.z < (uni / 2).z)
+                if (value.GetComponent<valuec>().c > z)
                 {
-                    uni21 = uni21 + (uni / 2);
+                    value.GetComponent<valuec>().posision = value.transform.position - uni - espacio2 - espacio;
+
                 }
             }
+            
         }
 
         CubitosXD.Remove(unionclon);
