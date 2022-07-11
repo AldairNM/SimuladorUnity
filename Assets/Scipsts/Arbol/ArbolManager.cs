@@ -121,12 +121,44 @@ public class ArbolManager : MonoBehaviour
             aux = null;
             Buscar(raiz, ref aux, info);
             menor = aux;
-            BuscarMenor(aux, ref menor);
-
+            if(menor.izq != null)
+            {
+                Nodo axd = menor.izq;
+                aux = axd;
+                menor = aux;
+                BuscarMenor(aux, ref menor);
+            }
+            else
+            {
+                if(menor.der != null)
+                {
+                    Nodo axd = menor.der;
+                    aux = axd;
+                    menor = aux;
+                    BuscarMenor2(aux, ref menor);
+                }
+                else
+                {
+                    BuscarMenor2(aux, ref menor);
+                }
+            }
             return menor;
         }
 
         private void BuscarMenor(Nodo reco, ref Nodo menor)
+        {
+            if (reco != null)
+            {
+                if (reco.info > menor.info)
+                {
+                    menor = reco;
+                    Debug.Log("Nuevo Menor: " + menor.info);
+                }
+                BuscarMenor(reco.izq, ref menor);
+                BuscarMenor(reco.der, ref menor);
+            }
+        }
+        private void BuscarMenor2(Nodo reco, ref Nodo menor)
         {
             if (reco != null)
             {
@@ -135,8 +167,8 @@ public class ArbolManager : MonoBehaviour
                     menor = reco;
                     Debug.Log("Nuevo Menor: " + menor.info);
                 }
-                BuscarMenor(reco.izq, ref menor);
-                BuscarMenor(reco.der, ref menor);
+                BuscarMenor2(reco.izq, ref menor);
+                BuscarMenor2(reco.der, ref menor);
             }
         }
 
